@@ -15,7 +15,7 @@ const images = Object.values(
 
 export default function HeroSlider() {
   return (
-    <section className="relative w-full h-[70vh]">
+   <section className="relative w-full h-[60vh] md:h-[90vh]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
