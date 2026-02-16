@@ -1,15 +1,15 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const Navbar: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollToVideos = () => {
-    const section = document.getElementById("videos-section");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
-    }
-  };
+  // const scrollToVideos = () => {
+  //   const section = document.getElementById("videos-section");
+  //   if (section) {
+  //     section.scrollIntoView({ behavior: "smooth" });
+  //     setMenuOpen(false);
+  //   }
+  // };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md text-white z-50 shadow-md">
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
-            <a href="#" className="hover:text-orange-400 transition">
+            {/* <a href="#" className="hover:text-orange-400 transition">
               Home
             </a>
 
@@ -46,26 +46,26 @@ const Navbar: React.FC = () => {
               className="hover:text-orange-400 transition"
             >
               Contact
-            </a>
+            </a> */}
 
             {/* Subscribe Button */}
-            <button className="ml-4 bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full text-sm font-semibold transition transform hover:scale-105 shadow-lg">
+            {/* <button className="ml-4 bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full text-sm font-semibold transition transform hover:scale-105 shadow-lg">
               Subscribe
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Toggle */}
-          <button
+          {/* <button
             className="md:hidden text-2xl"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? "✕" : "☰"}
-          </button>
+          </button> */}
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
+      {/* {menuOpen && (
         <div className="md:hidden bg-black/90 backdrop-blur-md px-6 py-6 space-y-4 text-sm font-medium">
           <a href="#" className="block hover:text-orange-400">
             Home
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
             Subscribe
           </button>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };
