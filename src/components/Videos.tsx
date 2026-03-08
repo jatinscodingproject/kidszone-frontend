@@ -40,28 +40,28 @@ const VideoCard: React.FC<VideoCardProps> = memo(({ video, onClick }) => {
     <div
       onClick={() => onClick(video)}
       className="group relative cursor-pointer rounded-2xl overflow-hidden 
-                 bg-gray-900 shadow-lg hover:shadow-indigo-500/40 
-                 transition-all duration-500 transform hover:-translate-y-2"
+      bg-gray-900 shadow-lg hover:shadow-indigo-500/40 
+      transition-all duration-500 transform hover:-translate-y-2"
     >
       {/* Thumbnail */}
       <video
         src={video.url}
         muted
         preload="metadata"
-        className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+        className="w-full h-72 object-cover opacity-80 group-hover:opacity-100 transition duration-500"
       />
 
-      {/* Dark Overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500" />
 
       {/* Play Icon */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <PlayIcon className="w-12 h-12 text-white opacity-80 group-hover:scale-125 transition duration-500" />
+        <PlayIcon className="w-14 h-14 text-white opacity-80 group-hover:scale-125 transition duration-500" />
       </div>
 
       {/* Title */}
       <div className="absolute bottom-0 w-full bg-gradient-to-t from-black to-transparent p-4">
-        <h3 className="text-white text-lg font-semibold">
+        <h3 className="text-white text-lg font-semibold truncate">
           {video.name}
         </h3>
       </div>
@@ -138,14 +138,17 @@ const Videos: React.FC = () => {
         Kids Video Library
       </h1>
 
-      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {/* Video Grid */}
+      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {renderedVideos}
       </div>
 
-
+      {/* Video Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 animate-fadeIn">
-          <div className="bg-gray-900 rounded-2xl w-full max-w-4xl shadow-2xl relative animate-scaleUp">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-gray-900 rounded-2xl w-full max-w-5xl shadow-2xl relative">
+
+            {/* Close Button */}
             <button
               onClick={() => setSelectedVideo(null)}
               className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition"
@@ -154,7 +157,7 @@ const Videos: React.FC = () => {
             </button>
 
             <div className="p-6">
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 truncate">
                 {selectedVideo.name}
               </h2>
 
@@ -163,14 +166,13 @@ const Videos: React.FC = () => {
                   ref={videoRef}
                   controls
                   autoPlay
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg max-h-[75vh]"
                 >
-                  <source
-                    src={selectedVideo.url}
-                    type="video/mp4"
-                  />
+                  <source src={selectedVideo.url} type="video/mp4" />
+                  <source src={selectedVideo.url} type="video/webm" />
                 </video>
 
+                {/* Fullscreen Button */}
                 <button
                   onClick={handleFullscreen}
                   className="absolute bottom-4 right-4 bg-black/70 p-2 rounded-full hover:bg-indigo-600 transition"
