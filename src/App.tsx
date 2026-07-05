@@ -22,7 +22,7 @@ export default function App() {
         params.get("msisdn") || localStorage.getItem("mobile");
 
       if (msisdn) {
-        const response = await axios.post("/notify-callback/check-subscription", {
+        const response = await axios.post("/check-subscription", {
           msisdn,
         });
 
@@ -56,7 +56,7 @@ export default function App() {
 
       // Redirect to subscription
       const subscribeResponse = await axios.post(
-        "/notify-callback/create-subscription",
+        "/create-subscription",
         {
           plan: "daily",
         }
