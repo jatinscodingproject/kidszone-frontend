@@ -56,7 +56,7 @@ export default function App() {
 
       // Redirect to subscription
       const subscribeResponse = await axios.post(
-        "/api/create-subscription",
+        "/create-subscription",
         {
           plan: "daily",
         }
